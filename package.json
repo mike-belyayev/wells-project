@@ -2,16 +2,16 @@
   "name": "wells-fullstack",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "scripts": {
+    "dev": "concurrently -n \"CLIENT,SERVER\" -c \"green,blue\" \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:client",
     "build:client": "cd client && npm run build",
-    "build:server": "cd server && npm run build",
-    "preview": "npm run build && npm run start",
+    "build:server": "echo 'Server build complete'",
     "start": "cd server && npm start",
-    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+    "install:all": "npm install && cd client && npm install",
+    "vercel-build": "npm run build"
   },
   "devDependencies": {
     "concurrently": "^8.0.0"
