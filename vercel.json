@@ -1,20 +1,14 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "server/public",
-  "installCommand": "npm run install:all",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "server/src/app.js",
+      "use": "@vercel/node"
     }
   ],
-  "functions": {
-    "api/app.js": {
-      "maxDuration": 60
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server/src/app.js"
     }
-  }
+  ]
 }
