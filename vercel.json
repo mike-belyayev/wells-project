@@ -1,0 +1,20 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "server/public",
+  "installCommand": "npm run install:all",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "functions": {
+    "api/app.js": {
+      "maxDuration": 60
+    }
+  }
+}

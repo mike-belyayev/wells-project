@@ -1,0 +1,116 @@
+/* Enhanced index.css with responsive scaling */
+:root {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #333333;
+  background-color: #ffffff;
+  padding: 0;
+  
+  /* Responsive scaling variables */
+  --scale-factor: calc(100vw / 3840); /* Base on 4K resolution */
+  --base-font-size: clamp(12px, 14px + (100vw - 1920px) * 0.01, 16px);
+  --compact-font-size: clamp(10px, 12px + (100vw - 1920px) * 0.008, 14px);
+  
+  /* Responsive spacing */
+  --spacing-xs: clamp(2px, 0.2vw, 4px);
+  --spacing-sm: clamp(4px, 0.4vw, 8px);
+  --spacing-md: clamp(8px, 0.8vw, 12px);
+  --spacing-lg: clamp(12px, 1.2vw, 16px);
+  
+  /* Card dimensions */
+  --card-height: clamp(1.6rem, 2rem + (100vw - 1920px) * 0.02, 2.2rem);
+  --card-padding: clamp(2px, 0.3vw, 5px);
+}
+
+/* Apply responsive base font size */
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 480px;
+  min-height: 100vh;
+  font-size: var(--base-font-size);
+}
+
+/* Viewport-specific overrides */
+body.viewport-1080p {
+  --card-height: 1.6rem;
+  --base-font-size: 11px;
+}
+
+body.viewport-768p {
+  --card-height: 1.4rem;
+  --base-font-size: 10px;
+  --card-padding: 1px 2px;
+}
+
+/* Compact layout for smaller screens */
+body.viewport-1080p .passenger-card,
+body.viewport-768p .passenger-card {
+  height: var(--card-height);
+  padding: var(--card-padding);
+  margin-bottom: 1px;
+}
+
+body.viewport-768p .passenger-job {
+  display: none; /* Hide job role on very small screens */
+}
+
+/* Enhanced button scaling */
+button {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--compact-font-size);
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e9e9e9;
+}
+
+/* Responsive utility classes */
+.text-scale-base { font-size: var(--base-font-size); }
+.text-scale-compact { font-size: var(--compact-font-size); }
+.text-scale-xs { font-size: clamp(0.5rem, 0.6rem + 0.3vw, 0.8rem); }
+
+.spacing-xs { padding: var(--spacing-xs); }
+.spacing-sm { padding: var(--spacing-sm); }
+.spacing-md { padding: var(--spacing-md); }
+
+/* Viewport-based media queries */
+@media (max-width: 3840px) {
+  :root {
+    --scale-factor: calc(100vw / 3840);
+  }
+}
+
+@media (max-width: 2560px) {
+  :root {
+    --base-font-size: clamp(11px, 13px + (100vw - 1920px) * 0.008, 14px);
+  }
+}
+
+@media (max-width: 1920px) {
+  :root {
+    --base-font-size: clamp(10px, 12px + (100vw - 1366px) * 0.01, 13px);
+    --card-height: clamp(1.4rem, 1.6rem + (100vw - 1366px) * 0.015, 1.8rem);
+  }
+}
+
+@media (max-width: 1366px) {
+  :root {
+    --base-font-size: 10px;
+    --card-height: 1.4rem;
+    --card-padding: 1px 3px;
+  }
+}
+
+/* High DPI screens adjustment */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  :root {
+    --base-font-size: clamp(11px, 13px + 0.3vw, 14px);
+  }
+}
